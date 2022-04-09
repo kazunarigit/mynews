@@ -11,6 +11,6 @@
         </style>
     </head>
     <body>
-        
+        @extends('layouts.profile')
     </body>
 </html>
