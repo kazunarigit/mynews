@@ -11,7 +11,7 @@ class ProfileController extends Controller
     public function add(){
         return view('admin.profile.create');
     }
-    public function create(){
+    public function create(Request $request){
         
         // 以下を追記
       // Varidationを行う
@@ -19,19 +19,6 @@ class ProfileController extends Controller
 
       $profile = new Profile;
       $form = $request->all();
-
-    
-    if (isset($form['image'])) {
-       $path = Storage::disk('s3')->putFile('/',$news_form['image'],'public');
-       $news->image_path = Storage::disk('s3')->url($path);
-    } else {
-        $news->image_path = null;
-    }
-
-      // フォームから送信されてきた_tokenを削除する
-      unset($form['_token']);
-      // フォームから送信されてきたimageを削除する
-      unset($form['image']);
 
       // データベースに保存する
       $profile->fill($form);
