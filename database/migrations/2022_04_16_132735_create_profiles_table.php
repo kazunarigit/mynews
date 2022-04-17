@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProfileTable extends Migration
+class CreateProfilesTable extends Migration//Profilesとする。
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateProfileTable extends Migration
      */
     public function up()
     {
-        Schema::create('profile', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {//profilesと複数形
             $table->bigIncrements('id');
             $table->string('name'); //名前
             $table->string('gender');  //性別
@@ -30,6 +30,6 @@ class CreateProfileTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profile');
+        Schema::dropIfExists('profiles');//複数形にする
     }
 }
