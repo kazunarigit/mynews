@@ -41,35 +41,9 @@ class ProfileController extends Controller
         return view('admin.profile.edit', ['profile_form' => $profile]);
     }
     
-    public function update(Request $request){
+    public function update(){
         
-         // Validationをかける
-      $this->validate($request, Profile::$rules);
-      // profile Modelからデータを取得する
-      $profile = Profile::find($request->id);
-      // 送信されてきたフォームデータを格納する
-      $profile_form = $request->all();
-       
-
-      unset($profile_form['remove']);
-      unset($profile_form['_token']);
-
-      // 該当するデータを上書きして保存する
-      $profile->fill($profile_form)->save();
-      
-      $history = new History();
-        $history->profile_id = $profile->id;
-        $history->edited_at = Carbon::now();
-        $history->save();
-        return redirect('admin/profile');
-    }
     
-     public function delete(Request $request)
-  {
-      
-      $profile = Profile::find($request->id);
-      // 削除する
-      $profile->delete();
       return redirect('admin/profile/');
   }  
     
