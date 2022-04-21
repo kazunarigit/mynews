@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Profile;//足りなかった。最初小文字だった。
+use App\History;
+use Carbon\Carbon;
 
 class ProfileController extends Controller
 {
@@ -42,9 +44,28 @@ class ProfileController extends Controller
     }
     
     public function update(){
-        
+        // Validationをかける
+      $this->validate($request, Profile::$rules);
+      // News Modelからデータを取得する
+      $profile = Profile::find($request->id);
+      // 送信されてきたフォームデータを格納する
+      $profile_form = $request->all();
+       
+
     
-      return redirect('admin/profile/');
+      unset($profile_form['remove']);
+      unset($profile_form['_token']);
+
+      // 該当するデータを上書きして保存する
+      $profile->fill($profile_form)->save();
+      
+      $history = new History();
+      $history->profile_id = $profile->id;
+      $history->edited_at = Carbon::now();
+      $history->save();
+
+    
+      return redirect('admin/profile');
   }  
     
 
