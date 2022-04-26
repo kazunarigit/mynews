@@ -15,6 +15,6 @@ class ProfileController extends Controller
 
         
         // また View テンプレートに  posts、という変数を渡している
-        return view('profile.index', [ 'posts' => $posts]);//追加
+        return view('profile.index', [ 'posts' => $posts]);// 追加
     }
 }

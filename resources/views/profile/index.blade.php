@@ -13,16 +13,16 @@
                                     {{ $post->updated_at->format('Y年m月d日') }}
                                 </div>
                                 <div class="name">
-                                    {{ \Str::limit($post->name, 150) }}//profile用に編集
+                                    {{ \Str::limit($post->name, 150) }}//　profile用に編集
                                 </div>
                                 <div class="gender">
-                                    {{ \Str::limit($post->gender, 150) }}//profile用に編集
+                                    {{ \Str::limit($post->gender, 150) }}//　profile用に編集
                                 </div>
                                 <div class="hobby">
-                                    {{ \Str::limit($post->hobby, 150) }}//profile用に編集
+                                    {{ \Str::limit($post->hobby, 150) }}//　profile用に編集
                                 </div>
                                 <div class="introduction">
-                                    {{ \Str::limit($post->introduction, 1500) }}//profile用に編集
+                                    {{ \Str::limit($post->introduction, 1500) }}//　profile用に編集
                                 </div>
                             </div>
                         </div>
