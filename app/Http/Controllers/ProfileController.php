@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Profile;
+
+class ProfileController extends Controller
+{
+    public function index(Request $request)
+    {
+        $posts = Profile::all()->sortByDesc('updated_at');
+
+        
+
+        
+        // また View テンプレートに  posts、という変数を渡している
+        return view('profile.index', [ 'posts' => $posts]);// 追加
+    }
+}
